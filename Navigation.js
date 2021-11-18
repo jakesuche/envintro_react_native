@@ -9,31 +9,43 @@ import Home from './screens/Home';
 import VerifyEmail from './screens/VerifyEmail';
 import Dashboard from './screens/Dashboard';
 import Customers from './screens/Customers';
-{/* <Stack.Screen
+import Product from './screens/Products';
+{
+  /* <Stack.Screen
           name="Customer"
           options={{headerShown: false}}
-          component={Customers}></Stack.Screen> */}
+          component={Customers}></Stack.Screen> */
+}
 function Navigation() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={"Customer"}>
-      <Stack.Screen
+      <Stack.Navigator initialRouteName={'Products'}>
+        <Stack.Screen
           name="Customer"
           options={{headerShown: false}}
-          component={Customers}></Stack.Screen>
-      <Stack.Screen
+          component={Customers}
+        />
+        <Stack.Screen
+          name="Products"
+          options={{headerShown: false}}
+          component={Product}
+        />
+        <Stack.Screen
           name="Dashboard"
           options={{headerShown: false}}
-          component={Dashboard}></Stack.Screen>
+          component={Dashboard}
+        />
         <Stack.Screen
           name="Home"
           options={{headerShown: false}}
-          component={Home}></Stack.Screen>
+          component={Home}
+        />
         <Stack.Screen
           name="Login"
           options={{headerShown: false}}
-          component={Login}></Stack.Screen>
+          component={Login}
+        />
         <Stack.Screen
           options={{
             headerShown: false,
@@ -45,7 +57,8 @@ function Navigation() {
             headerTintColor: 'white',
           }}
           name="Signup"
-          component={Signup}></Stack.Screen>
+          component={Signup}
+        />
         <Stack.Screen
           options={{
             title: 'Forgot password',
@@ -56,7 +69,8 @@ function Navigation() {
             headerTintColor: 'white',
           }}
           name="forgotPassword"
-          component={Forgot}></Stack.Screen>
+          component={Forgot}
+        />
         <Stack.Screen
           options={{
             headerShown: false,
@@ -68,10 +82,10 @@ function Navigation() {
             headerTintColor: 'white',
           }}
           name="Onboarding"
-          component={Onboarding}></Stack.Screen>
-          <Stack.Screen
+          component={Onboarding}
+        />
+        <Stack.Screen
           options={{
-            
             title: 'Verify Email',
             headerStyle: {
               backgroundColor: '#1c1c1c',
@@ -80,7 +94,8 @@ function Navigation() {
             headerTintColor: 'white',
           }}
           name="VerifyEmail"
-          component={VerifyEmail}></Stack.Screen>
+          component={VerifyEmail}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

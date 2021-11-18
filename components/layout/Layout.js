@@ -16,7 +16,7 @@ import {
 
 
 
-const Layout = ({children}) => {
+const Layout = ({children, title}) => {
   const drawer = useRef(null);
   const Navigate = () => {
     navigation.navigate('Onboarding');
@@ -48,7 +48,7 @@ const Layout = ({children}) => {
             <Feather size={25} color="#000" name="menu" />
           </TouchableOpacity>
 
-          <Text style={{color:'#000', fontSize:17, fontWeight:'500', fontFamily:'Poppins'}}>Username</Text>
+          <Text style={{color:'#000', fontSize:17, fontWeight:'800', fontFamily:'Poppins'}}> { title || 'Username'}</Text>
           <TouchableOpacity>
             <Feather size={25} color="#000" name="bell" />
           </TouchableOpacity>

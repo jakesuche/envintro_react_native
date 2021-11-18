@@ -3,6 +3,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Contacts from 'react-native-contacts';
 import {ToastProvider, useToast} from 'react-native-toast-notifications';
+import Ant from 'react-native-vector-icons/AntDesign'
 import CustomModal from '../components/CustomeModal';
 import faker from 'faker';
 faker.seed(10);
@@ -50,7 +51,7 @@ const AppendComponent = () => (
   </TouchableOpacity>
 );
 
-const Customer = () => {
+const Product = () => {
   const [show, setShow] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -93,7 +94,7 @@ const Customer = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
   return (
     <>
-      <Layout>
+      <Layout title={'Products'}>
         <SafeAreaView
           style={[
             styles.container,
@@ -219,7 +220,7 @@ const Customer = () => {
             name="arrow-left"
           />
           <Text style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
-            Create customer
+            Create Product
           </Text>
 
           <TouchableOpacity onPress={getContacts}>
@@ -230,37 +231,71 @@ const Customer = () => {
         <ScrollView style={{flexGrow: 1}}>
           <View style={styles.inputWrapper}>
             <Input appendComponent={<AppendComponent />} title="Phone Number" />
+            <Input appendComponent={<AppendComponent />} title="Product Name" />
             <Input
               appendComponent={<AppendComponent />}
-              title="Customer Name"
+              title="Product Category"
             />
-             <Input
-                  appendComponent={<AppendComponent />}
-                  title="Email Address"
-                />
-            <TouchableOpacity
-              onPress={() => setShowMore(!showMore)}
-              style={styles.viewMore}>
-              <Text style={{color: '#5797f5'}}>More info</Text>
-              <Feather color="#5797f5" size={20} name="chevron-down" />
-            </TouchableOpacity>
-            {showMore && (
-              <>
-              <TouchableOpacity style={styles.imageWrapper}>
-                <Feather size={35} name="image" />
+            <Input appendComponent={<AppendComponent />} title="Brand" />
+            <View
+              style={{flexDirection: 'row',  justifyContent: 'space-between', alignItems: 'center'}}>
+              <Input
+                containerStyle={{minWidth: '75%'}}
+                appendComponent={<AppendComponent />}
+                title="Code"
+              />
+              <TouchableOpacity style={styles.barCode}>
+                <Ant name="barcode" size={26} />
               </TouchableOpacity>
-                <Input
-                  appendComponent={<AppendComponent />}
-                  title="Opening Balance"
-                />
-                
-                <Input appendComponent={<AppendComponent />} title="Address" />
-                <Input appendComponent={<AppendComponent />} title="Note" />
-               
-              </>
-            )}
+             
+            </View>
+            <View
+              style={{flexDirection: 'row',  justifyContent: 'space-between'}}>
+              <Input
+                containerStyle={{minWidth: '45%'}}
+                appendComponent={<AppendComponent />}
+                title="Stock"
+              />
+              <Input
+                containerStyle={{minWidth: '45%'}}
+                appendComponent={<AppendComponent />}
+                title="Unit"
+              />
+            </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Input
+                containerStyle={{minWidth: '45%'}}
+                appendComponent={<AppendComponent />}
+                title="Sale price"
+              />
+              <Input
+                containerStyle={{minWidth: '47%'}}
+                appendComponent={<AppendComponent />}
+                title="Discount"
+              />
+            </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Input
+                containerStyle={{minWidth: '45%'}}
+                appendComponent={<AppendComponent />}
+                title="Wholesales price"
+              />
+              <Input
+                containerStyle={{minWidth: '47%'}}
+                appendComponent={<AppendComponent />}
+                title="Dealer price"
+              />
+            </View>
+            <Input appendComponent={<AppendComponent />} title="Manufacturer" />
+
+            <TouchableOpacity style={styles.imageWrapper}>
+              <Feather size={35} name="image" />
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.createBtn}>
-              <Text style={{color: '#fff'}}>Create</Text>
+              <Text style={{color: '#fff'}}>Save & Publish</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -343,18 +378,28 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
 
-  imageWrapper:{
-  
-    flex:1,
+  imageWrapper: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth:1,
+    borderWidth: 1,
     textAlign: 'center',
-    marginHorizontal:145,
-    padding:10,
-    borderRadius:4
-   
+    marginHorizontal: 145,
+    padding: 10,
+    borderRadius: 4,
+    marginBottom: 14,
+  },
+
+  barCode:{
+        backgroundColor:'#DAE9F7',
+        borderRadius:10,
+        marginRight:20,
+        height:50,
+        width:50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom:-10
   }
 });
 
-export default Customer;
+export default Product;
