@@ -10,6 +10,7 @@ import VerifyEmail from './screens/VerifyEmail';
 import Dashboard from './screens/Dashboard';
 import Customers from './screens/Customers';
 import Product from './screens/Products';
+import Sales from './screens/Sales';
 {
   /* <Stack.Screen
           name="Customer"
@@ -20,11 +21,16 @@ function Navigation() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Products'}>
+      <Stack.Navigator initialRouteName={'Sales'}>
         <Stack.Screen
           name="Customer"
           options={{headerShown: false}}
           component={Customers}
+        />
+        <Stack.Screen
+          name="Sales"
+          options={{headerShown: false}}
+          component={Sales}
         />
         <Stack.Screen
           name="Products"

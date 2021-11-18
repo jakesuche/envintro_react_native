@@ -97,7 +97,7 @@ const Product = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
   return (
     <>
-      <Layout title={'Products'}>
+      <Layout title={'Sales Order'}>
         <SafeAreaView
           style={[
             styles.container,
@@ -223,7 +223,7 @@ const Product = () => {
             name="arrow-left"
           />
           <Text style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
-            Create Product
+            Create Sale order
           </Text>
 
           <TouchableOpacity onPress={getContacts}>
@@ -233,14 +233,27 @@ const Product = () => {
 
         <ScrollView style={{flexGrow: 1}}>
           <View style={styles.inputWrapper}>
-            <Input appendComponent={<AppendComponent />} title="Phone Number" />
-            <Input appendComponent={<AppendComponent />} title="Product Name" />
+            <Input appendComponent={<AppendComponent />} title="Customer Name" />
+            <Input appendComponent={<AppendComponent />} title="Sales Order" />
             <Input
               appendComponent={<AppendComponent />}
-              title="Product Category"
+              title="Reference"
             />
-            <Input appendComponent={<AppendComponent />} title="Brand" />
-            <View
+            <Input appendComponent={<AppendComponent />} title="Sales Order Date" />
+            <Input appendComponent={<AppendComponent />} title="Expected Shipment Date" />
+            <Input appendComponent={<AppendComponent />} title="Salesperson" />
+            <Input appendComponent={<AppendComponent />} title="Delivery Method" />
+            <TouchableOpacity onPress={()=>setShowMore(true)} style={styles.viewMore}>
+                <Feather size={20} color="#5797f5" name="plus-circle" />
+                <Text style={{marginLeft:5}}>
+                    Add Line Item
+                </Text>
+
+            </TouchableOpacity>
+            {
+                showMore && (
+                    <>
+                    <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
@@ -249,7 +262,7 @@ const Product = () => {
               <Input
                 containerStyle={{minWidth: '75%'}}
                 appendComponent={<AppendComponent />}
-                title="Code"
+                title="Item"
               />
               <TouchableOpacity style={styles.barCode}>
                 <Ant name="barcode" size={26} />
@@ -260,42 +273,22 @@ const Product = () => {
               <Input
                 containerStyle={{minWidth: '45%'}}
                 appendComponent={<AppendComponent />}
-                title="Stock"
+                title="Quantity"
               />
               <Input
                 containerStyle={{minWidth: '45%'}}
                 appendComponent={<AppendComponent />}
-                title="Unit"
+                title="Rate"
               />
             </View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Input
-                containerStyle={{minWidth: '45%'}}
-                appendComponent={<AppendComponent />}
-                title="Sale price"
-              />
-              <Input
-                containerStyle={{minWidth: '47%'}}
-                appendComponent={<AppendComponent />}
-                title="Discount"
-              />
-            </View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Input
-                containerStyle={{minWidth: '45%'}}
-                appendComponent={<AppendComponent />}
-                title="Wholesales price"
-              />
-              <Input
-                containerStyle={{minWidth: '47%'}}
-                appendComponent={<AppendComponent />}
-                title="Dealer price"
-              />
-            </View>
-            <Input appendComponent={<AppendComponent />} title="Manufacturer" />
-            <CustomeSwitch label="Returnable ?" switchStyle={{marginLeft:20,marginBottom:10}} value={saveMe} onChange={value => setSave(value)} />
+                    </>
+                )
+            }
+            
+           
+           
+           
+           
             <TouchableOpacity style={styles.imageWrapper}>
               <Feather size={35} name="image" />
             </TouchableOpacity>
@@ -333,6 +326,20 @@ const Product = () => {
   );
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -347,9 +354,9 @@ const styles = StyleSheet.create({
   viewMore: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 15,
     flexDirection: 'row',
     flex: 1,
+    marginBottom:20
   },
   createBtn: {
     backgroundColor: '#5797f5',
